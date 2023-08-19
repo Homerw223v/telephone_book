@@ -137,9 +137,7 @@ def telephone_book():
     A function to process user input and send it to the appropriate function
     :return: None
     """
-    print(separator)
-    print(commands)
-    print(separator, end='\n\n.')
+    print(f"{separator}\n{commands}\n{separator}\n\n")
     while True:
         try:
             action: int = int(input("####phone_book$$ "))
