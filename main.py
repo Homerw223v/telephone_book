@@ -76,7 +76,7 @@ def search_contact() -> None:
     os.system("clear||cls")
     while True:
         pattern: list = input('Введите характеристики для поиска через пробел: ').split()
-        if pattern == []:
+        if not pattern:
             os.system("clear||cls")
             print("Не предоставлено ни одной характеристики для поиска")
         else:
@@ -99,9 +99,10 @@ def change_contact_information() -> None:
     Function to change an existing contact
     :return: None
     """
+    os.system("clear||cls")
     while True:
         pattern: list = input('Введите характеристики для поиска через пробел: ').split()
-        if pattern == []:
+        if not pattern:
             os.system("clear||cls")
             print("Не предоставлено ни одной характеристики для поиска")
         else:
