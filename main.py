@@ -74,7 +74,13 @@ def search_contact() -> None:
     :return: None
     """
     os.system("clear||cls")
-    pattern: list = input('Введите характеристики для поиска через пробел: ').split()
+    while True:
+        pattern: list = input('Введите характеристики для поиска через пробел: ').split()
+        if pattern == []:
+            os.system("clear||cls")
+            print("Не предоставлено ни одной характеристики для поиска")
+        else:
+            break
     count: int = 0
     with open('telephone_book.txt', mode='r', encoding='utf-8') as file:
         for line in file.readlines():
@@ -93,8 +99,13 @@ def change_contact_information() -> None:
     Function to change an existing contact
     :return: None
     """
-    os.system("clear||cls")
-    pattern: list = input('Введите характеристики для поиска контакта через пробел: ').split()
+    while True:
+        pattern: list = input('Введите характеристики для поиска через пробел: ').split()
+        if pattern == []:
+            os.system("clear||cls")
+            print("Не предоставлено ни одной характеристики для поиска")
+        else:
+            break
     count = 0
     with open('telephone_book.txt', mode='r', encoding='utf-8') as file:
         for line in file.readlines():
