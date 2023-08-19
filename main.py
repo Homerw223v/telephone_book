@@ -35,20 +35,20 @@ def show_all_contacts() -> None:
         number: int = 1
         contacts = file.readlines()
         pages = len(contacts) // 8 if len(contacts) % 8 == 0 else (len(contacts) // 8) + 1
-        print('Список контактов:')
+        print('Список контактов:'.center(os.get_terminal_size().columns))
         for line in contacts:
             print(f"{number}: {line.strip()}")
             if number % 8 == 0 and (number // 8) < pages:
-                print(f"               Страница {(number // 8)} из {pages}")
+                print(f"Страница {(number // 8)} из {pages}".center(os.get_terminal_size().columns))
                 input('Next page')
                 os.system("clear")
-                print('Список контактов:')
+                print('Список контактов:'.center(os.get_terminal_size().columns))
 
             elif number % 8 == 0 and (number // 8) == pages:
-                print(f"               Страница {pages} из {pages}")
+                print(f"Страница {pages} из {pages}".center(os.get_terminal_size().columns))
                 input('Exit')
             elif number % 8 != 0 and (number // 8) + 1 == pages and line == contacts[-1]:
-                print(f"               Страница {pages} из {pages}")
+                print(f"Страница {pages} из {pages}".center(os.get_terminal_size().columns))
                 input('Exit')
             number += 1
     os.system("clear")
