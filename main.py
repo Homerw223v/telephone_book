@@ -4,7 +4,7 @@ import sys
 
 commands: str = ("---Чтобы вывести все контакты из справочник введите: 1\n"
                  "---Чтобы добавить новую запись в справочник введите: 2\n"
-                 "---Чтобы отредоктировать уже имеющуюся запись введите: 3\n"
+                 "---Чтобы отредактировать уже имеющуюся запись введите: 3\n"
                  "---Чтобы найти запись по характеристикам введите: 4\n"
                  "---Чтобы выйти из справочника введите: 0")
 separator: str = '----------------------------------------------------------'
@@ -31,7 +31,7 @@ def show_all_contacts() -> None:
     :return: None
     """
     with open('telephone_book.txt', mode='r', encoding='utf-8') as file:
-        os.system("clear")
+        os.system("clear||cls")
         number: int = 1
         contacts = file.readlines()
         pages = len(contacts) // 8 if len(contacts) % 8 == 0 else (len(contacts) // 8) + 1
@@ -41,7 +41,7 @@ def show_all_contacts() -> None:
             if number % 8 == 0 and (number // 8) < pages:
                 print(f"Страница {(number // 8)} из {pages}".center(os.get_terminal_size().columns))
                 input('Next page')
-                os.system("clear")
+                os.system("clear||cls")
                 print('Список контактов:'.center(os.get_terminal_size().columns))
 
             elif number % 8 == 0 and (number // 8) == pages:
@@ -51,7 +51,7 @@ def show_all_contacts() -> None:
                 print(f"Страница {pages} из {pages}".center(os.get_terminal_size().columns))
                 input('Exit')
             number += 1
-    os.system("clear")
+    os.system("clear||cls")
     telephone_book()
 
 
@@ -60,7 +60,7 @@ def add_contact() -> None:
     Function to add a new contact to the phone book
     :return: None
     """
-    os.system("clear")
+    os.system("clear||cls")
     contact: str = _create_contact_info()
     with open('telephone_book.txt', 'a+', encoding='utf-8') as file:
         file.write(contact)
@@ -73,7 +73,7 @@ def search_contact() -> None:
     Function to search for an existing contact
     :return: None
     """
-    os.system("clear")
+    os.system("clear||cls")
     pattern: list = input('Введите характеристики для поиска через пробел: ').split()
     count: int = 0
     with open('telephone_book.txt', mode='r', encoding='utf-8') as file:
@@ -93,7 +93,7 @@ def change_contact_information() -> None:
     Function to change an existing contact
     :return: None
     """
-    os.system("clear")
+    os.system("clear||cls")
     pattern: list = input('Введите характеристики для поиска контакта через пробел: ').split()
     count = 0
     with open('telephone_book.txt', mode='r', encoding='utf-8') as file:
@@ -151,6 +151,6 @@ def telephone_book():
 
 
 if __name__ == "__main__":
-    os.system('clear')
+    os.system("clear||cls")
     print("Добро пожаловать в телефонный справочник.".center(os.get_terminal_size().columns), end='\n\n')
     telephone_book()
