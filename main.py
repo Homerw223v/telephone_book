@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import sys
+import re
 
 commands: str = ("---Чтобы вывести все контакты из справочник введите: 1\n"
                  "---Чтобы добавить новую запись в справочник введите: 2\n"
@@ -15,13 +16,28 @@ def _create_contact_info() -> str:
     Helper function for creating a new or changing an old contact
     :return: str
     """
-    last_name: str = input('Введите фамилию: ').capitalize()
-    first_name: str = input('Введите имя: ')
-    middle_name: str = input('Введите отчество: ')
-    organization: str = input('Введите название организации: ')
-    phone_number_work: str = input('Введите рабочий номер телефона: ')
-    phone_number_personal: str = input('Введите личный номер телефона: ')
-    line: str = f"{last_name} {first_name} {middle_name} {organization} {phone_number_work} {phone_number_personal}\n"
+    patterns = [['Введите фамилию: ', r'[a-zA-Zа-яА-ЯёЁ-]+', 'Фамилия должна состоять только из букв'],
+                ['Введите имя: ', r'[a-zA-Zа-яА-ЯёЁ-]+', 'Имя должно состоять только из букв'],
+                ['Введите отчество: ', r'[a-zA-Zа-яА-ЯёЁ-]+', 'Отчество должно состоять только из букв'],
+                ['Введите название организации\n'
+                 '(Название организации необходимо написать без пробелов. '
+                 'Допускается использовать символы - \' \"): ', r'[a-zA-Zа-яА-Я-\'\"]+',
+                 'Неверное название организации'],
+                ['Введите рабочий номер телефона: ', r"[0-9+()-]+",
+                 'Неверный номер телефона. Допускаются символы +-()'],
+                ['Введите личный номер телефона: ', r"[0-9+()-]+", 'Неверный номер телефона. Допускаются символы +-()']]
+    answer = []
+    for i in range(len(patterns)):
+        while True:
+            string: str = input(patterns[i][0]).capitalize()
+            if re.fullmatch(rf'{patterns[i][1]}', string):
+                answer.append(string)
+                break
+            else:
+                os.system("clear||cls")
+                print(patterns[i][2])
+
+    line: str = f"{answer[0]} {answer[1]} {answer[2]} {answer[3]} {answer[4]} {answer[5]}\n"
     return line
 
 
