@@ -84,7 +84,8 @@ def search_contact() -> None:
     count: int = 0
     with open('telephone_book.txt', mode='r', encoding='utf-8') as file:
         for line in file.readlines():
-            a = all([i in line.split() for i in pattern])
+            characters = [i.lower() for i in line.split()]
+            a = all([i in characters for i in pattern])
             if a:
                 print(line.strip())
                 count += 1
@@ -110,8 +111,8 @@ def change_contact_information() -> None:
     count = 0
     with open('telephone_book.txt', mode='r', encoding='utf-8') as file:
         for line in file.readlines():
-
-            a = all([i in line.split() for i in pattern])
+            characters = [i.lower() for i in line.split()]
+            a = all([i in characters for i in pattern])
             if a:
                 count += 1
                 while True:
@@ -127,7 +128,7 @@ def change_contact_information() -> None:
                     path.write_text(path.read_text().replace(old_data, new_data))
                     break
     if not count:
-        print('В списке контактов не человека с такими данными.')
+        print('В списке контактов нет человека с такими данными.')
     print(separator)
     telephone_book()
 
