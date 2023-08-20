@@ -7,6 +7,7 @@ fake = Faker(locale='ru_RU')
 def create_random_person(random: int) -> str:
     """
     Function to create a random person
+    :param random: Random value from 0 to 1
     :return: str
     """
     last_name: str = fake.last_name_male() if random == 0 else fake.last_name_female()
@@ -22,6 +23,7 @@ def create_random_person(random: int) -> str:
 def add_contact(number: int) -> None:
     """
     Function to add a new contact to the phone book
+    :param number: Number of contacts to create
     :return: None
     """
     for i in range(number):

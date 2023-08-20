@@ -16,7 +16,7 @@ def _create_contact_info() -> str:
     Helper function for creating a new or changing an old contact
     :return: str
     """
-    patterns = [['Введите фамилию: ', r'[a-zA-Zа-яА-ЯёЁ-]+', 'Фамилия должна состоять только из букв'],
+    patterns: list = [['Введите фамилию: ', r'[a-zA-Zа-яА-ЯёЁ-]+', 'Фамилия должна состоять только из букв'],
                 ['Введите имя: ', r'[a-zA-Zа-яА-ЯёЁ-]+', 'Имя должно состоять только из букв'],
                 ['Введите отчество: ', r'[a-zA-Zа-яА-ЯёЁ-]+', 'Отчество должно состоять только из букв'],
                 ['Введите название организации\n'
@@ -26,7 +26,7 @@ def _create_contact_info() -> str:
                 ['Введите рабочий номер телефона: ', r"[0-9+()-]+",
                  'Неверный номер телефона. Допускаются символы +-()'],
                 ['Введите личный номер телефона: ', r"[0-9+()-]+", 'Неверный номер телефона. Допускаются символы +-()']]
-    answer = []
+    answer: list = []
     for i in range(len(patterns)):
         while True:
             string: str = input(patterns[i][0]).capitalize()
@@ -49,7 +49,7 @@ def show_all_contacts() -> None:
     with open('telephone_book.txt', mode='r', encoding='utf-8') as file:
         os.system("clear||cls")
         number: int = 1
-        contacts = file.readlines()
+        contacts: list = file.readlines()
         pages = len(contacts) // 8 if len(contacts) % 8 == 0 else (len(contacts) // 8) + 1
         print('Список контактов:'.center(os.get_terminal_size().columns))
         for line in contacts:
