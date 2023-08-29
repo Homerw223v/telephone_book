@@ -17,7 +17,8 @@ separator: str = '----------------------------------------------------------'
 def _create_contact_info() -> str:
     """
     Helper function for creating a new or changing an old contact
-    :return: str
+    :rtype: str
+    :return: String that contains a new contact
     """
     patterns: list = [['Введите фамилию: ', '[a-zA-Zа-яА-ЯёЁ-]+', 'Фамилия должна состоять только из букв'],
                       ['Введите имя: ', '[a-zA-Zа-яА-ЯёЁ-]+', 'Имя должно состоять только из букв'],
@@ -48,13 +49,13 @@ def _create_contact_info() -> str:
 def show_all_contacts() -> None:
     """
     Function to display all available contacts
-    :return: None
+    :rtype: None
     """
     with open('telephone_book.txt', mode='r', encoding='utf-8') as file:
         os.system("clear||cls")
         number: int = 1
         contacts: list = file.readlines()
-        pages = len(contacts) // 8 if len(contacts) % 8 == 0 else (len(contacts) // 8) + 1
+        pages: int = len(contacts) // 8 if len(contacts) % 8 == 0 else (len(contacts) // 8) + 1
         print(Fore.LIGHTYELLOW_EX + 'Список контактов:'.center(os.get_terminal_size().columns))
         for line in contacts:
             print(Fore.LIGHTGREEN_EX + f"{number}: {line.strip()}")
@@ -78,7 +79,7 @@ def show_all_contacts() -> None:
 def add_contact() -> None:
     """
     Function to add a new contact to the phone book
-    :return: None
+    :rtype: None
     """
     os.system("clear||cls")
     contact: str = _create_contact_info()
@@ -91,7 +92,7 @@ def add_contact() -> None:
 def search_contact() -> None:
     """
     Function to search for an existing contact
-    :return: None
+    :rtype: None
     """
     os.system("clear||cls")
     while True:
@@ -118,7 +119,7 @@ def search_contact() -> None:
 def change_contact_information() -> None:
     """
     Function to change an existing contact
-    :return: None
+    :rtype: None
     """
     os.system("clear||cls")
     while True:
@@ -153,10 +154,10 @@ def change_contact_information() -> None:
     telephone_book()
 
 
-def telephone_book():
+def telephone_book() -> None:
     """
     A function to process user input and send it to the appropriate function
-    :return: None
+    :rtype: None
     """
     print(Fore.GREEN + "Телефонный справочник".center(os.get_terminal_size().columns), end='\n\n')
     print(Fore.LIGHTCYAN_EX + f"{separator}\n{commands}\n{separator}\n\n")
