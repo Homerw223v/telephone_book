@@ -165,4 +165,5 @@ def telephone_book() -> None:
             case 4:
                 search_contact()
             case _:
+                clear()
                 print(LEXICON['not_number'])
