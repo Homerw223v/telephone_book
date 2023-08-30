@@ -1,7 +1,11 @@
-# telephone_book
+# telephone_book  
+
 Проект телефонный справочник сделанный для тестового задания   
 Чтобы использовать его необходимо:  
-1.Установите необходимые модули из файла requirements.txt командой pip install -r requirements.txt  
+1.Установите необходимые модули из файла requirements.txt командой 
+```bash
+pip install -r requirements.txt
+```
 2.В консоли проследовать в папку с проектом и ввести python3 main.py (в Windows: python main.py) и следовать инструкциям.  
 Возможности программы:  
 
