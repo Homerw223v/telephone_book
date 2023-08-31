@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 import re
 from colorama import init, Fore
-import constants
+from constants import constants
 from lexicon import LEXICON
 
 init(autoreset=True)

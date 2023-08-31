@@ -1,4 +1,4 @@
-import functions
+from functions import functions
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 import os
 from colorama import Fore
-import constants
+from constants import constants
 
 LEXICON = {'list_of_contacts': Fore.LIGHTYELLOW_EX + 'Список контактов:'.center(os.get_terminal_size().columns),
            'exit': Fore.MAGENTA + 'Exit',

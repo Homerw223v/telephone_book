@@ -23,7 +23,7 @@ separator: str = Fore.LIGHTRED_EX + '-------------------------------------------
 
 contacts_per_page = 8
 
-file_name = 'telephone_book.txt'
+file_name = '../telephone_book.txt'
 
 answer = ['да', 'yes', 'y', 'n', 'no', 'нет']
 
